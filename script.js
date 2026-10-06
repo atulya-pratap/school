@@ -1,18 +1,8 @@
-const SUPABASE_URL = "https://pzplzdgdlnjfwbklxbfd.supabase.co";
-const SUPABASE_KEY = "sb_publishable_N3pli21Nl9PtLXeFkiuizg_W5Aw5MpM";
-
-// Security feature: Escapes HTML tags to prevent XSS attacks from database text
-function sanitizeHTML(str) {
-    if (!str) return "";
-    const tempDiv = document.createElement('div');
-    tempDiv.textContent = str;
-    return tempDiv.innerHTML;
-}
-
 async function loadStudents() {
     try {
+        // Updated table name from 'students' to 'student'
         const response = await fetch(
-            `${SUPABASE_URL}/rest/v1/students?select=*`,
+            `${SUPABASE_URL}/rest/v1/student?select=*`,
             {
                 headers: {
                     apikey: SUPABASE_KEY,
@@ -33,7 +23,7 @@ async function loadStudents() {
         container.innerHTML = ""; // Clear loading state
 
         if (students.length === 0) {
-            container.innerHTML = `<p class="loading-state">No students found yet.</p>`;
+            container.innerHTML = `<p class="loading-state">No student profiles found yet.</p>`;
             return;
         }
 
@@ -41,7 +31,6 @@ async function loadStudents() {
             const card = document.createElement("div");
             card.className = "student-card";
 
-            // Using the sanitizer to ensure safe data rendering
             const safeName = sanitizeHTML(student.name);
             const safeClass = sanitizeHTML(student.class);
             const safeSection = sanitizeHTML(student.section);
@@ -61,6 +50,3 @@ async function loadStudents() {
         document.getElementById("students-container").innerHTML = `<p class="loading-state">Connection error. Please check your internet.</p>`;
     }
 }
-
-// Initialize
-loadStudents();
