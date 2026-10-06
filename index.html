@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>School Magazine</title>
-
+    <title>JNV Varanasi | School Magazine 2026</title>
+    
+    <!-- Premium Typography: Playfair Display for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>School Magazine</h1>
-        <p>The Students • 2026</p>
+    <header class="magazine-header">
+        <div class="header-content">
+            <p class="issue-number">Issue No. 1 • 2026</p>
+            <h1>JNV Varanasi</h1>
+            <p class="subtitle">The Digital Magazine Project</p>
+        </div>
     </header>
 
     <main>
-        <h2>Our Students</h2>
-
-        <div id="students-container">
-            Loading students...
-        </div>
+        <section class="editorial-section">
+            <h2>Our Students</h2>
+            <p class="section-desc">The brilliant minds shaping our future.</p>
+            
+            <div id="students-container" class="grid-container">
+                <div class="loading-state">Loading student profiles...</div>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
